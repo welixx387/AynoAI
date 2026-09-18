@@ -2,6 +2,7 @@
 // Никаких внешних библиотек — чистый JS, чтобы не тянуть Node.js/сборку.
 
 const messagesEl = document.getElementById("messages");
+const messagesInnerEl = document.getElementById("messages-inner");
 const emptyStateEl = document.getElementById("empty-state");
 const conversationListEl = document.getElementById("conversation-list");
 const chatForm = document.getElementById("chat-form");
@@ -160,9 +161,9 @@ newChatBtn.addEventListener("click", createNewConversation);
 // --- Рендер сообщений ---
 
 function renderMessages(messages) {
-  messagesEl.innerHTML = "";
+  messagesInnerEl.innerHTML = "";
   if (!messages || messages.length === 0) {
-    messagesEl.appendChild(emptyStateEl);
+    messagesInnerEl.appendChild(emptyStateEl);
     return;
   }
   messages.forEach((m) => appendMessageBubble(m.role, m.content));
@@ -170,8 +171,8 @@ function renderMessages(messages) {
 }
 
 function appendMessageBubble(role, content) {
-  if (emptyStateEl.parentElement === messagesEl) {
-    messagesEl.removeChild(emptyStateEl);
+  if (emptyStateEl.parentElement === messagesInnerEl) {
+    messagesInnerEl.removeChild(emptyStateEl);
   }
   const row = document.createElement("div");
   row.className = "message-row " + role;
@@ -181,7 +182,7 @@ function appendMessageBubble(role, content) {
   bubble.textContent = content;
 
   row.appendChild(bubble);
-  messagesEl.appendChild(row);
+  messagesInnerEl.appendChild(row);
   return bubble;
 }
 
@@ -212,6 +213,15 @@ chatInput.addEventListener("keydown", (e) => {
     e.preventDefault();
     chatForm.requestSubmit();
   }
+});
+
+// Кнопки-подсказки в пустом состоянии — сразу отправляют готовый промпт
+messagesInnerEl.addEventListener("click", (e) => {
+  const chip = e.target.closest(".chip");
+  if (!chip) return;
+  const prompt = chip.dataset.prompt;
+  if (!prompt || isStreaming) return;
+  sendMessage(prompt);
 });
 
 async function sendMessage(text) {

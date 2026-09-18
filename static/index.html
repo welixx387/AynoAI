@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Максимилиан Керн</title>
+<title>AynoAI</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%AD%3C/text%3E%3C/svg%3E" />
 <link rel="stylesheet" href="/style.css" />
 </head>
@@ -28,26 +28,36 @@
     <header class="chat-header">
       <button id="menu-toggle" class="icon-btn menu-toggle" aria-label="Меню">☰</button>
       <div class="persona">
-        <div class="persona-avatar">МК</div>
+        <div class="persona-avatar">Ay</div>
         <div>
-          <div class="persona-name">Максимилиан Керн</div>
-          <div class="persona-subtitle">Стратег. Ролевой ИИ-персонаж, не настоящий человек.</div>
+          <div class="persona-name">AynoAI</div>
+          <div class="persona-subtitle">ИИ-стратег с макиавеллистским складом ума. Ролевой персонаж, не настоящий человек.</div>
         </div>
       </div>
       <button id="settings-btn" class="icon-btn" aria-label="Настройки">⚙</button>
     </header>
 
     <div id="messages" class="messages">
-      <div class="empty-state" id="empty-state">
-        <div class="empty-emoji">🎭</div>
-        <p>Начни диалог — нажми «+ Новый диалог» или просто напиши сообщение внизу.</p>
+      <div class="messages-inner" id="messages-inner">
+        <div class="empty-state" id="empty-state">
+          <div class="empty-emoji">🎭</div>
+          <h2 class="empty-title">AynoAI</h2>
+          <p>Начни диалог — просто напиши сообщение внизу, или выбери тему:</p>
+          <div class="suggestion-chips">
+            <button type="button" class="chip" data-prompt="Дай совет по переговорам со сложным партнёром.">Переговоры</button>
+            <button type="button" class="chip" data-prompt="Как выстроить репутацию эксперта в своей сфере?">Репутация</button>
+            <button type="button" class="chip" data-prompt="Расскажи о своём подходе к стратегии.">О тебе</button>
+          </div>
+        </div>
       </div>
     </div>
 
-    <form id="chat-form" class="chat-form">
-      <textarea id="chat-input" placeholder="Напиши сообщение…" rows="1"></textarea>
-      <button type="submit" id="send-btn" class="send-btn" aria-label="Отправить">➤</button>
-    </form>
+    <div class="input-bar">
+      <form id="chat-form" class="chat-form">
+        <textarea id="chat-input" placeholder="Напиши сообщение…" rows="1"></textarea>
+        <button type="submit" id="send-btn" class="send-btn" aria-label="Отправить">➤</button>
+      </form>
+    </div>
   </main>
 </div>
 
