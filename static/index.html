@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Максимилиан Керн</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%AD%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div class="app">
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <button id="new-chat-btn" class="new-chat-btn">+ Новый диалог</button>
+      <button id="sidebar-close" class="icon-btn sidebar-close" aria-label="Закрыть меню">✕</button>
+    </div>
+    <div id="conversation-list" class="conversation-list"></div>
+    <div class="sidebar-footer">
+      <span id="status-dot" class="status-dot"></span>
+      <span id="status-text">проверка соединения…</span>
+    </div>
+  </aside>
+
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+  <main class="chat">
+    <header class="chat-header">
+      <button id="menu-toggle" class="icon-btn menu-toggle" aria-label="Меню">☰</button>
+      <div class="persona">
+        <div class="persona-avatar">МК</div>
+        <div>
+          <div class="persona-name">Максимилиан Керн</div>
+          <div class="persona-subtitle">Стратег. Ролевой ИИ-персонаж, не настоящий человек.</div>
+        </div>
+      </div>
+      <button id="settings-btn" class="icon-btn" aria-label="Настройки">⚙</button>
+    </header>
+
+    <div id="messages" class="messages">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-emoji">🎭</div>
+        <p>Начни диалог — нажми «+ Новый диалог» или просто напиши сообщение внизу.</p>
+      </div>
+    </div>
+
+    <form id="chat-form" class="chat-form">
+      <textarea id="chat-input" placeholder="Напиши сообщение…" rows="1"></textarea>
+      <button type="submit" id="send-btn" class="send-btn" aria-label="Отправить">➤</button>
+    </form>
+  </main>
+</div>
+
+<div id="settings-panel" class="settings-panel hidden">
+  <div class="settings-content">
+    <div class="settings-title-row">
+      <h3>Настройки</h3>
+      <button id="settings-close" class="icon-btn" aria-label="Закрыть">✕</button>
+    </div>
+
+    <label class="settings-field">
+      Модель
+      <select id="model-select"></select>
+    </label>
+
+    <label class="settings-field">
+      Температура: <span id="temp-value">0.8</span>
+      <input type="range" id="temp-slider" min="0" max="1.5" step="0.05" value="0.8" />
+    </label>
+
+    <p class="settings-hint">
+      Выше температура — более неожиданные и «творческие» ответы, ниже — более
+      предсказуемые и строгие.
+    </p>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
